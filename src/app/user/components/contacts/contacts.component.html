@@ -1,2 +1,12 @@
-<p>contacts works!</p>
-<router-outlet />
+<grid-system gridTemplateColumns="10fr 1fr 1fr 5fr">
+  <grid-system gridTemplateColumns="repeat(4, 1fr)" gap="20px">
+    <app-single-contact
+      *ngFor="let contact of contactsService.getContacts()"
+      [contact]="contact"
+    />
+  </grid-system>
+
+  <section class="vr-line"></section>
+
+  <router-outlet />
+</grid-system>

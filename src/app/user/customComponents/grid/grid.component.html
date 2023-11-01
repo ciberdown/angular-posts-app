@@ -1,1 +1,9 @@
-<p>grid works!</p>
+<div
+  [ngStyle]="{
+    'grid-template-columns': gridTemplateColumns,
+    'grid-template-rows': gridTemplateRows,
+    'gap': gap
+  }"
+>
+  <ng-content />
+</div>

@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-grid',
+  selector: 'grid-system',
   templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.scss']
+  styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent {
-
+  @Input() gap: string = '0';
+  @Input() gridTemplateColumns: string = '1fr';
+  @Input() gridTemplateRows: string = '';
 }

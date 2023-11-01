@@ -1,1 +1,30 @@
-<p>single-contact works!</p>
+<div class="card" style="width: 18rem" [routerLink]="'select/' + contact?.id" routerLinkActive="activeSelected">
+  <div class="card-body">
+    <flexbox flexDirection="column" gap="20px">
+      <flexbox alignItems="center">
+        <h5 class="card-title">name: {{ contact?.name | titlecase }}</h5>
+        <button
+          [disabled]="contact?.id && selectedId && contact?.id === +selectedId"
+          (click)="onRemove($event)"
+          class="btn btn-primary"
+        >
+          Remove
+        </button>
+      </flexbox>
+      <flexbox alignItems="center">
+        <h5 class="card-text">age: {{ contact?.age }}</h5>
+        <h6 class="card-text">id: {{ contact?.id }}</h6>
+        <button
+          (click)="onEdit($event)"
+          [routerLink]="'edit/' + contact?.id"
+          class="btn btn-primary"
+        >
+          Edit
+        </button>
+      </flexbox>
+      <p class="card-text" *ngIf="contact?.email">
+        email: {{ contact?.email }}
+      </p>
+    </flexbox>
+  </div>
+</div>

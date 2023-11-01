@@ -1,1 +1,10 @@
-<p>flexbox works!</p>
+<div
+  [ngStyle]="{
+    'flex-direction': flexDirection,
+    'align-items': alignItems,
+    'justify-content': justifyContent,
+    gap: gap
+  }"
+>
+  <ng-content />
+</div>

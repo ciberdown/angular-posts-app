@@ -1,0 +1,9 @@
+.card {
+  cursor: pointer;
+  box-shadow: 2px 2px 8px grey;
+}
+
+.activeSelected {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}

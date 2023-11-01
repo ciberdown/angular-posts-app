@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { UserMainComponent } from '../components/user-main/user-main.component';
 import { SelectedContactComponent } from '../components/contacts/selected-contact/selected-contact.component';
 import { ContactsComponent } from '../components/contacts/contacts.component';
@@ -17,7 +18,7 @@ const routes: Routes = [
     component: UserMainComponent,
     children: [
       {
-        path: '',
+        path: 'contacts',
         component: ContactsComponent,
         children: [
           { path: 'select/:id', component: SelectedContactComponent },

@@ -1,1 +1,34 @@
-<p>edit-contact works!</p>
+<div class="card" style="width: 18rem">
+  <div class="card-body">
+    <input
+      [(ngModel)]="name"
+      type="text"
+      class="form-control"
+      [placeholder]="selectedContact?.name"
+    /><br />
+    <input
+      [(ngModel)]="age"
+      type="number"
+      class="form-control"
+      [placeholder]="selectedContact?.age"
+    /><br />
+    <input
+      [(ngModel)]="email"
+      type="email"
+      class="form-control"
+      [placeholder]="
+        selectedContact?.email ? selectedContact?.email : 'enter email'
+      "
+    />
+    <p class="text-danger" *ngIf="email">your email will be pirvate!</p>
+    <br />
+
+    <button
+      [disabled]="!name || !age"
+      (click)="onSave()"
+      class="btn btn-primary"
+    >
+      Save
+    </button>
+  </div>
+</div>
