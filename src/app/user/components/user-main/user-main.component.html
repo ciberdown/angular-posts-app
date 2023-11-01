@@ -4,20 +4,20 @@
       <a
         class="nav-item nav-link"
         routerLinkActive="active"
-        routerLink="/"
+        routerLink="/user"
         [routerLinkActiveOptions]="{ exact: true }"
-        >Home</a
+        >Contacts</a
       >
-      <a class="nav-item nav-link" routerLinkActive="active" routerLink="/user"
-        >User</a
+      <a class="nav-item nav-link" routerLinkActive="active" routerLink="posts"
+        >Posts</a
       >
-      <a class="nav-item nav-link" routerLinkActive="active" routerLink="/admin"
-        >Admin</a
+      <a class="nav-item nav-link" routerLinkActive="active" routerLink="signIn"
+        >Sign in</a
       >
     </div>
   </div>
 </nav>
-<hr />
-<hr />
 
-<div class="con"><router-outlet /></div>
+<div class="con">
+  <router-outlet />
+</div>
