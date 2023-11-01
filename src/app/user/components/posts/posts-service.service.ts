@@ -1,12 +1,12 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
-import { Observable, catchError, retry, throwError } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostsServiceService {
-  private url: string = 'https://jsonplaceholder.typicode.com/posts';
+  public readonly url: string = 'https://jsonplaceholder.typicode.com/posts';
   constructor(private http: HttpClient) {}
 
   getPostsObs(): Observable<Object> {

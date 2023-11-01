@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Post } from '../posts-service.service';
+import { Post, PostsServiceService } from '../posts-service.service';
+import { HttpClient } from '@angular/common/http';
+import { string } from 'prop-types';
 
 @Component({
   selector: 'app-single-post',
@@ -8,10 +10,15 @@ import { Post } from '../posts-service.service';
 })
 export class SinglePostComponent implements OnInit {
   @Input() post!: Post;
-  constructor() {}
+  constructor(
+    private http: HttpClient,
+    private postsService: PostsServiceService,
+  ) {}
   ngOnInit(): void {}
 
-  onRemovePost(){
-    
+  onRemovePost(event: MouseEvent) {
+    const endpoint: string = '/' + this.post.id;
+    event.preventDefault();
+    this.http.delete(this.postsService.url + endpoint);
   }
 }

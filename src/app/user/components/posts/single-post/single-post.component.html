@@ -1,7 +1,7 @@
-<div class="card" style="width: 18rem">
+<div class="card" style="width: 18rem" [routerLink]="'select/' + post.id">
   <flexbox>
     <h6>id: {{ post.id }}</h6>
-    <button (click)="onRemovePost()" class="btn btn-dark">remove</button>
+    <button (click)="onRemovePost($event)" class="btn btn-dark">remove</button>
   </flexbox>
   <div class="card-body">
     <h5 class="card-title">{{ post.title }}</h5>

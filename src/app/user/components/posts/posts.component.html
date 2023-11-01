@@ -1,5 +1,14 @@
-<grid-system gridTemplateColumns="repeat(5, 1fr)" gap="20px">
-  <app-single-post *ngFor="let post of posts; let i = index" [post]="post" />
-</grid-system>
+<h1 *ngIf="loading">loading...</h1>
+<grid-system *ngIf="!loading" gridTemplateColumns="10fr 1fr 1fr 5fr" gap="10px">
+  <grid-system gridTemplateColumns="repeat(5, 1fr)" gap="20px">
+    <app-single-post *ngFor="let post of posts; let i = index" [post]="post" />
+  </grid-system>
 
-some post
+  <section class="vr-line"></section>
+
+  <flexbox flexDirection="column" gap="10px">
+    <button class="btn btn-primary" routerLink="add">Add Post</button>
+
+    <router-outlet />
+  </flexbox>
+</grid-system>

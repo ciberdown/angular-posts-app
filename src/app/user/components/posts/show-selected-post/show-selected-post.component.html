@@ -1,1 +1,14 @@
-<p>show-selected-post works!</p>
+<div
+  *ngIf="!loading"
+  class="card"
+  style="width: 18rem"
+>
+  <flexbox>
+    <h6>id: {{ selctedPost?.id }}</h6>
+  </flexbox>
+  <div class="card-body">
+    <h5 class="card-title">{{ selctedPost?.title }}</h5>
+    <p class="card-text">{{ selctedPost?.body }}</p>
+  </div>
+</div>
+<h1 *ngIf="loading">Loading...</h1>

@@ -1,1 +1,21 @@
-<p>add-post works!</p>
+<h1 *ngIf="loading">saving...</h1>
+
+<flexbox *ngIf="!loading && !savedTitle" gap="20px" flexDirection="column">
+  <div class="form-group">
+    <label>Title</label>
+    <input type="text" class="form-control" [(ngModel)]="title" />
+  </div>
+  <div class="form-group">
+    <label>Body</label>
+    <input type="text" class="form-control" [(ngModel)]="body" />
+  </div>
+
+  <button
+    (click)="onSave()"
+    [disabled]="!body || !title"
+    class="btn btn-outline-primary"
+  >
+    Save
+  </button>
+</flexbox>
+<h1 *ngIf="savedTitle" class="text-success">Saved!</h1>
