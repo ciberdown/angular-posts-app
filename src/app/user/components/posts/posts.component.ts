@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class PostsComponent {
   loading: boolean = false;
   posts: Post[] = [];
+  selectedPostId: number | undefined;
   constructor(
     private postsService: PostsServiceService,
     private http: HttpClient,
@@ -25,6 +26,7 @@ export class PostsComponent {
           this.posts = res as Post[];
         }
       });
+
   }
 
   getPostsObs(): Observable<Object> {

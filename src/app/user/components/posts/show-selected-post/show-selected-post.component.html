@@ -1,8 +1,4 @@
-<div
-  *ngIf="!loading"
-  class="card"
-  style="width: 18rem"
->
+<div *ngIf="!loading" class="card" style="width: 18rem">
   <flexbox>
     <h6>id: {{ selctedPost?.id }}</h6>
   </flexbox>
@@ -12,3 +8,5 @@
   </div>
 </div>
 <h1 *ngIf="loading">Loading...</h1>
+
+<app-comments />

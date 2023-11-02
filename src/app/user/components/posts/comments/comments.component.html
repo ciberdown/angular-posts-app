@@ -1,0 +1,9 @@
+<h1 *ngIf="fetchingData">loading comments...</h1>
+
+<div class="comments">
+  <hr />
+  <h3>comments:</h3>
+  <flexbox *ngIf="!fetchingData" flexDirection="column" gap="20px">
+    <app-signle-comment *ngFor="let comment of comments" [comment]="comment" />
+  </flexbox>
+</div>

@@ -26,16 +26,19 @@ export class ShowSelectedPostComponent implements OnInit {
         this.getSinglePostObs(id)
           .pipe(catchError(this.postsService.handleError))
           .subscribe((post) => {
-            this.selctedPost = post as Post;
+            this.selctedPost = post;
             this.loading = false;
           });
       }
     });
   }
 
-  getSinglePostObs(endpoint: string): Observable<Object> {
+  getSinglePostObs(endpoint: string): Observable<Post> {
     this.loading = true;
-    const res = this.http.get(this.postsService.url + '/' + endpoint);
+    const res = this.http.get<Post>(this.postsService.url + '/' + endpoint);
     return res;
+  }
+  getPostCommentsObs(){
+
   }
 }

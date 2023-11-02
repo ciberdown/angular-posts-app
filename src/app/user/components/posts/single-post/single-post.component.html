@@ -1,7 +1,18 @@
-<div class="card" style="width: 18rem" [routerLink]="'select/' + post.id">
+<div
+  class="card"
+  [ngClass]="{ selected: selectedPostId === post.id }"
+  style="width: 18rem"
+  [routerLink]="'select/' + post.id"
+>
   <flexbox>
     <h6>id: {{ post.id }}</h6>
-    <button (click)="onRemovePost($event)" class="btn btn-dark">remove</button>
+    <button
+      [disabled]="selectedPostId === post.id"
+      (click)="onRemovePost($event)"
+      class="btn btn-dark"
+    >
+      remove
+    </button>
   </flexbox>
   <div class="card-body">
     <h5 class="card-title">{{ post.title }}</h5>

@@ -1,4 +1,10 @@
 .card {
   padding: 10px;
   cursor: pointer;
+  box-shadow: 2px 2px 8px grey;
+}
+
+.selected {
+  box-shadow: none;
+  transform: translate(1px, 1px);
 }

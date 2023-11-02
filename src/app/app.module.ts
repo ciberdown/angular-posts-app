@@ -24,6 +24,8 @@ import { AdminMainComponent } from './admin/components/admin-main/admin-main.com
 import { UserMainComponent } from './user/components/user-main/user-main.component';
 import { TemplateDrivenFormComponent } from './admin/components/template-driven-form/template-driven-form.component';
 import { DirectiveFormsComponent } from './admin/components/directive-forms/directive-forms.component';
+import { CommentsComponent } from './user/components/posts/comments/comments.component';
+import { SignleCommentComponent } from './user/components/posts/comments/signle-comment/signle-comment.component';
 
 const routes: Routes = [
   {
@@ -65,6 +67,8 @@ const routes: Routes = [
     UserMainComponent,
     TemplateDrivenFormComponent,
     DirectiveFormsComponent,
+    CommentsComponent,
+    SignleCommentComponent,
   ],
   imports: [
     BrowserModule,
