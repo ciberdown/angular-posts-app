@@ -1,0 +1,18 @@
+<div class="user" *ngIf="!fetchingData">
+  <flexbox flexDirection="column">
+    <h5>{{ selectedUser?.name }}</h5>
+
+    <p>username: {{ selectedUser?.username }}</p>
+    <p>email: {{ selectedUser?.email }}</p>
+    <p>
+      address: {{ selectedUser?.address?.city }},{{
+        selectedUser?.address?.street
+      }},{{ selectedUser?.address?.suite }}
+    </p>
+    <p>phone: {{ selectedUser?.phone }}</p>
+    <p>website: {{selectedUser?.website}}</p>
+    <p>company: {{selectedUser?.company?.name}}</p>
+  </flexbox>
+</div>
+
+<h1 *ngIf="fetchingData">loading...</h1>

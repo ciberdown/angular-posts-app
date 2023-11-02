@@ -1,0 +1,12 @@
+.user {
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.233);
+  box-shadow: 2px 2px 8px grey;
+  cursor: pointer;
+}
+
+.selected {
+  box-shadow: none;
+  transform: translate(1px, 1px);
+}

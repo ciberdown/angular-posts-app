@@ -26,6 +26,10 @@ import { TemplateDrivenFormComponent } from './admin/components/template-driven-
 import { DirectiveFormsComponent } from './admin/components/directive-forms/directive-forms.component';
 import { CommentsComponent } from './user/components/posts/comments/comments.component';
 import { SignleCommentComponent } from './user/components/posts/comments/signle-comment/signle-comment.component';
+import { UsersComponent } from './user/components/users/users.component';
+import { SingleUserComponent } from './user/components/users/single-user/single-user.component';
+import { AddUserComponent } from './user/components/users/add-user/add-user.component';
+import { ShowSelectedUserComponent } from './user/components/users/show-selected-user/show-selected-user.component';
 
 const routes: Routes = [
   {
@@ -69,6 +73,10 @@ const routes: Routes = [
     DirectiveFormsComponent,
     CommentsComponent,
     SignleCommentComponent,
+    UsersComponent,
+    SingleUserComponent,
+    AddUserComponent,
+    ShowSelectedUserComponent,
   ],
   imports: [
     BrowserModule,

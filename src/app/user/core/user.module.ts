@@ -11,6 +11,9 @@ import { PostsComponent } from '../components/posts/posts.component';
 import { ShowSelectedPostComponent } from '../components/posts/show-selected-post/show-selected-post.component';
 import { EditPostComponent } from '../components/posts/edit-post/edit-post.component';
 import { AddPostComponent } from '../components/posts/add-post/add-post.component';
+import { UsersComponent } from '../components/users/users.component';
+import { AddUserComponent } from '../components/users/add-user/add-user.component';
+import { ShowSelectedUserComponent } from '../components/users/show-selected-user/show-selected-user.component';
 
 const routes: Routes = [
   {
@@ -53,6 +56,20 @@ const routes: Routes = [
       {
         path: 'signIn',
         component: SignInComponent,
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
+        children: [
+          {
+            path: 'add',
+            component: AddUserComponent,
+          },
+          {
+            path: 'selected/:id',
+            component: ShowSelectedUserComponent,
+          },
+        ],
       },
     ],
   },

@@ -1,0 +1,13 @@
+<grid-system gridTemplateColumns="20fr 1fr 1fr 5fr" gap="10px">
+  <grid-system gridTemplateColumns="repeat(4, 1fr)" gap="20px">
+    <app-single-user *ngFor="let user of users; let i = index" [user]="user" />
+  </grid-system>
+
+  <section class="vr-line"></section>
+
+  <div style="min-width: 100px;">
+    <button class="btn btn-outline-primary" routerLink="add">Add User</button>
+    <hr />
+    <router-outlet />
+  </div>
+</grid-system>

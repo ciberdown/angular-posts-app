@@ -1,0 +1,21 @@
+<div
+  class="user"
+  [routerLink]="'selected/' + user.id"
+  (click)="onSelect()"
+  [ngClass]="{ selected: selectedId === user.id }"
+>
+  <flexbox flexDirection="column">
+    <flexbox>
+      <h5>{{ user.name }}</h5>
+      <button
+        [disabled]="selectedId === user.id"
+        class="btn btn-primary"
+        (click)="onRemove($event)"
+      >
+        remove
+      </button>
+    </flexbox>
+    <p>username: {{ user.username }}</p>
+    <p>email: {{ user.email }}</p>
+  </flexbox>
+</div>
