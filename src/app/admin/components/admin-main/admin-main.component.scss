@@ -7,10 +7,14 @@
   align-items: stretch;
 }
 
-input{
-    border: 3px solid rgba(221, 221, 221, 0.229);
+input {
+  border: 3px solid rgba(221, 221, 221, 0.229);
 }
 
 input.ng-invalid.ng-touched {
   border: 3px solid rgba(255, 0, 0, 0.2);
+}
+
+.router-foo {
+  padding: 30px;
 }

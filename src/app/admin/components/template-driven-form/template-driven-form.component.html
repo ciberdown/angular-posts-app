@@ -1,0 +1,85 @@
+<form *ngIf="!submitted" class="con" #myForm="ngForm" (ngSubmit)="submit()">
+  <flexbox flexDirection="column" gap="10px">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        #nameInput="ngModel"
+        ngModel
+        required
+        name="name"
+        type="name"
+        class="form-control"
+        placeholder="name"
+      />
+      <button
+        *ngIf="!nameInput.value"
+        (click)="onSuggestUsername($event)"
+        class="btn btn-outline-primary my-2 font-monospace"
+      >
+        Suggest a Username
+      </button>
+      <p *ngIf="nameInput.valid">tick</p>
+    </div>
+    <div class="form-group">
+      <label for="age">Age</label>
+      <input
+        #ageInput="ngModel"
+        ngModel
+        required
+        name="age"
+        type="number"
+        class="form-control"
+        placeholder="age"
+      />
+      <p *ngIf="ageInput.valid">tick</p>
+    </div>
+    <div class="form-group" ngModelGroup="myUsernameGroup">
+      <label for="username">Username</label>
+      <input
+        #usernameInput="ngModel"
+        ngModel
+        username
+        name="username"
+        type="username"
+        class="form-control"
+        placeholder="Enter username"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input
+        #emailInput="ngModel"
+        ngModel
+        email
+        name="email"
+        type="email"
+        class="form-control"
+        placeholder="Enter email"
+      />
+      <small id="emailHelp" class="form-text text-muted">
+        We'll never share your email with anyone else.
+      </small>
+      <p *ngIf="emailInput.valid">tick</p>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">
+      Submit
+    </button>
+  </flexbox>
+</form>
+
+<button
+  class="btn btn-outline-primary"
+  *ngIf="submitted"
+  (click)="onAddOther($event)"
+>
+  Add Another
+</button>
+<br />
+<div class="log-user my-2" *ngIf="submitted">
+  <h3>submitted user:</h3>
+  <p>name: {{ name }}</p>
+  <p>age: {{ age }}</p>
+  <p *ngIf="username">username: {{ username }}</p>
+  <p *ngIf="email">email: {{ email }}</p>
+</div>

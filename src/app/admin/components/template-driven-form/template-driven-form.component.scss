@@ -1,0 +1,12 @@
+input.ng-invalid.ng-touched {
+  border: 1px solid rgba(255, 0, 0, 0.394);
+}
+input.ng-valid {
+  border: 1px solid rgba(0, 128, 0, 0.464);
+}
+.log-user {
+  border-radius: 6px;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.222);
+  display: inline-block;
+}

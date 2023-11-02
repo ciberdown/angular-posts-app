@@ -22,6 +22,8 @@ import { FlexboxComponent } from './user/customComponents/flexbox/flexbox.compon
 import { GridComponent } from './user/customComponents/grid/grid.component';
 import { AdminMainComponent } from './admin/components/admin-main/admin-main.component';
 import { UserMainComponent } from './user/components/user-main/user-main.component';
+import { TemplateDrivenFormComponent } from './admin/components/template-driven-form/template-driven-form.component';
+import { DirectiveFormsComponent } from './admin/components/directive-forms/directive-forms.component';
 
 const routes: Routes = [
   {
@@ -61,6 +63,8 @@ const routes: Routes = [
     GridComponent,
     AdminMainComponent,
     UserMainComponent,
+    TemplateDrivenFormComponent,
+    DirectiveFormsComponent,
   ],
   imports: [
     BrowserModule,
