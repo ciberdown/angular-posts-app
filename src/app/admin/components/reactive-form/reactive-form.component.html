@@ -1,0 +1,72 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div formGroupName="userData">
+    <label for="name">Name:</label>
+    <input
+      formControlName="name"
+      type="text"
+      id="name"
+      placeholder="enter name"
+    />
+    <p *ngIf="getName()?.invalid">Name is invalid</p>
+    <p *ngIf="getName()?.valid">name is valid</p>
+    <p *ngIf="getName()?.touched">name is touched</p>
+    <p *ngIf="getName()?.dirty">name is dirty</p>
+
+    <label for="username">username:</label>
+    <input
+      formControlName="username"
+      type="text"
+      id="username"
+      placeholder="enter username"
+    />
+
+    <p>username status: {{ getUsername()?.status }}</p>
+    <p *ngIf="isUsernameForbidden()">
+      username {{ getUsername()?.value }} is forbidden
+    </p>
+
+    <p *ngIf="getUsername()?.invalid">username is invalid</p>
+    <p *ngIf="getUsername()?.valid">username is valid</p>
+    <p *ngIf="getUsername()?.touched">username is touched</p>
+    <p *ngIf="getUsername()?.dirty">username is dirty</p>
+  </div>
+
+  <hr />
+
+  <label for="email">Email:</label>
+  <input
+    type="email"
+    id="email"
+    formControlName="email"
+    placeholder="enter email"
+  />
+  <p>email status: {{ getEmail()?.status }}</p>
+  <p *ngIf="isEmailForbidden()">email '{{ getEmail()?.value }}' is forbidden</p>
+
+  <p *ngIf="getEmail()?.invalid">Email is invalid</p>
+  <p *ngIf="getEmail()?.valid">Email is valid</p>
+  <p *ngIf="getEmail()?.touched">Email is touched</p>
+  <p *ngIf="getEmail()?.dirty">Email is dirty</p>
+
+  <hr />
+
+  <input (keydown)="keyDown($event)" type="text" formControlName="hobbies" />
+  <button
+    type="button"
+    (click)="onAddHobby()"
+    [disabled]="!getHobbies()?.value"
+  >
+    Add hobbie
+  </button>
+
+  <div>
+    <p *ngFor="let hobby of hobbies; let i = index">{{ hobby }}</p>
+  </div>
+
+  <hr />
+
+  <button type="submit">Submit</button>
+
+  <p *ngIf="myForm.invalid">form is invalid</p>
+  <p *ngIf="myForm.valid">form is valid</p>
+</form>

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import {
   Contact,
   ContactsService,
@@ -9,12 +10,14 @@ import {
   templateUrl: './single-contact.component.html',
   styleUrls: ['./single-contact.component.scss'],
 })
-export class SingleContactComponent implements OnInit {
+export class SingleContactComponent implements OnInit, OnDestroy {
   @Input() contact: Contact | undefined;
   selectedId: number | undefined;
+  subscriber!: Subscription;
+
   constructor(private contactsService: ContactsService) {}
   ngOnInit(): void {
-    this.contactsService.ActiveIdEmmiter.subscribe((id) => {
+    this.subscriber = this.contactsService.ActiveIdEmmiter.subscribe((id) => {
       if (id === this.contact?.id) console.log(this.contact);
       this.selectedId = id;
     });
@@ -33,5 +36,7 @@ export class SingleContactComponent implements OnInit {
     event.stopPropagation();
   }
 
-  
+  ngOnDestroy(): void {
+    this.subscriber.unsubscribe();
+  }
 }

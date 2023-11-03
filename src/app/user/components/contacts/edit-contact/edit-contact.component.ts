@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscriber } from 'rxjs';
+import { Subscription } from 'rxjs';
+
 import {
   Contact,
   ContactsService,
@@ -11,12 +12,13 @@ import {
   templateUrl: './edit-contact.component.html',
   styleUrls: ['./edit-contact.component.scss'],
 })
-export class EditContactComponent implements OnInit {
+export class EditContactComponent implements OnInit, OnDestroy {
   selectedContact: Contact | undefined;
   name!: string | undefined;
   age!: number | undefined;
   email: string = '';
   saved: boolean = false;
+  subsribers: Subscription[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -24,15 +26,19 @@ export class EditContactComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      const id: number = +params['id'];
-      if (id) {
-        this.setActiveId(id);
-      }
-    });
-    this.contacsService.contactEditEmmiter.subscribe((contact) => {
-      this.selectedContact = contact;
-    });
+    this.subsribers.push(
+      this.activatedRoute.params.subscribe((params) => {
+        const id: number = +params['id'];
+        if (id) {
+          this.setActiveId(id);
+        }
+      }),
+    );
+    this.subsribers.push(
+      this.contacsService.contactEditEmmiter.subscribe((contact) => {
+        this.selectedContact = contact;
+      }),
+    );
   }
 
   setActiveId(id: number) {
@@ -57,5 +63,11 @@ export class EditContactComponent implements OnInit {
     }
     this.makeInputsEmpty();
     this.selectedContact?.id && this.setActiveId(this.selectedContact?.id);
+  }
+
+  ngOnDestroy(): void {
+    this.subsribers.forEach((subscriber) => {
+      subscriber.unsubscribe();
+    });
   }
 }

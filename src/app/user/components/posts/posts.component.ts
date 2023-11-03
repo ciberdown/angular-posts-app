@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Post, PostsServiceService } from './posts-service.service';
-import { Observable, catchError, retry } from 'rxjs';
+import { Observable, Subscription, catchError, retry } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -8,17 +8,19 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.scss'],
 })
-export class PostsComponent {
+export class PostsComponent implements OnDestroy {
   loading: boolean = false;
   posts: Post[] = [];
   selectedPostId: number | undefined;
+  postsSubsciber!: Subscription;
+
   constructor(
     private postsService: PostsServiceService,
     private http: HttpClient,
   ) {}
 
   ngOnInit(): void {
-    this.getPostsObs()
+    this.postsSubsciber = this.getPostsObs()
       .pipe(retry(3), catchError(this.postsService.handleError))
       .subscribe((res) => {
         this.loading = false;
@@ -26,12 +28,15 @@ export class PostsComponent {
           this.posts = res as Post[];
         }
       });
-
   }
 
-  getPostsObs(): Observable<Object> {
+  getPostsObs(): Observable<Post[]> {
     this.loading = true;
-    const res = this.http.get(this.postsService.url);
+    const res = this.http.get<Post[]>(this.postsService.url);
     return res;
+  }
+
+  ngOnDestroy(): void {
+    this.postsSubsciber.unsubscribe();
   }
 }
