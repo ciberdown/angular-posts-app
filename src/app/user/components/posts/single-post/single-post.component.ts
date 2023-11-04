@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Post, PostsServiceService } from '../posts-service.service';
 import { HttpClient } from '@angular/common/http';
-import { string } from 'prop-types';
 import { CommentsService } from '../comments/comments.service';
 
 @Component({
