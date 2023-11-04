@@ -12,7 +12,7 @@ export class SinglePostComponent implements OnInit {
   @Input() post!: Post;
   selectedPostId: number | undefined;
   constructor(
-    private http: HttpClient,
+  private http: HttpClient,
     private postsService: PostsServiceService,
     private commentsService: CommentsService,
   ) {}
